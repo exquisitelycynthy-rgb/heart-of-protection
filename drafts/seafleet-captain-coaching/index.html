@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Captain Maneuvering Coaching — DRAFT</title>
+<meta name="description" content="DRAFT funnel page: one-to-one shiphandling and maneuvering coaching for masters and senior officers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0b1e33;
+    --navy-2: #12304f;
+    --ink: #13202e;
+    --muted: #556375;
+    --line: #dde3ea;
+    --paper: #f6f8fa;
+    --white: #ffffff;
+    --brass: #c08a2e;
+    --brass-dark: #9a6d1f;
+    --signal: #1f6f5c;
+    --radius: 10px;
+    --max: 1120px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: "Source Serif 4", Georgia, serif; line-height: 1.2; margin: 0 0 .5em; }
+  h1 { font-size: clamp(2rem, 4.6vw, 3.25rem); }
+  h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+  h3 { font-size: 1.15rem; }
+  p { margin: 0 0 1em; }
+  a { color: inherit; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+  section { padding: 80px 0; }
+  .eyebrow {
+    font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--brass); margin-bottom: 12px; display: block;
+  }
+  .lede { font-size: 1.125rem; color: var(--muted); max-width: 680px; }
+
+  /* Draft banner */
+  .draft-bar {
+    background: #fff4d6; color: #5c4300; font-size: .85rem; text-align: center;
+    padding: 8px 16px; border-bottom: 1px solid #f0d99a;
+  }
+  .ph { background: #fff4d6; color: #5c4300; border: 1px dashed #d9b75c; border-radius: 4px; padding: 0 4px; font-size: .92em; }
+
+  /* Nav */
+  header.nav { background: var(--navy); color: #fff; }
+  header.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { font-weight: 700; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .brand-mark {
+    width: 28px; height: 28px; border: 2px solid var(--brass); border-radius: 50%;
+    display: grid; place-items: center; font-size: .7rem; color: var(--brass);
+  }
+  .nav-cta { font-size: .9rem; }
+
+  /* Buttons */
+  .btn {
+    display: inline-block; background: var(--brass); color: #fff; text-decoration: none;
+    font-weight: 600; padding: 14px 24px; border-radius: 8px; border: 0; cursor: pointer;
+    font-size: 1rem; font-family: inherit; transition: background .15s;
+  }
+  .btn:hover, .btn:focus-visible { background: var(--brass-dark); }
+  .btn:focus-visible { outline: 3px solid #f3d699; outline-offset: 2px; }
+  .btn-ghost { background: transparent; border: 1px solid rgba(255,255,255,.4); }
+  .btn-ghost:hover { background: rgba(255,255,255,.08); }
+  .btn-sm { padding: 9px 16px; font-size: .9rem; }
+
+  /* Hero */
+  .hero {
+    background:
+      radial-gradient(1200px 500px at 85% -10%, rgba(192,138,46,.18), transparent 60%),
+      linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+    color: #fff; padding: 96px 0 88px;
+  }
+  .hero-grid { display: grid; grid-template-columns: 1.25fr .9fr; gap: 56px; align-items: center; }
+  .hero .lede { color: #c6d2df; }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+  .hero-note { font-size: .85rem; color: #9fb0c3; margin-top: 14px; }
+  .hero-card {
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14);
+    border-radius: var(--radius); padding: 28px;
+  }
+  .hero-card h3 { color: #fff; font-family: Inter, sans-serif; font-size: 1rem; letter-spacing: .02em; }
+  .checklist { list-style: none; padding: 0; margin: 0; }
+  .checklist li { padding: 8px 0 8px 28px; position: relative; border-top: 1px solid rgba(255,255,255,.08); color: #dbe4ee; font-size: .95rem; }
+  .checklist li:first-child { border-top: 0; }
+  .checklist li::before {
+    content: ""; position: absolute; left: 2px; top: 15px; width: 12px; height: 7px;
+    border-left: 2px solid var(--brass); border-bottom: 2px solid var(--brass); transform: rotate(-45deg);
+  }
+
+  /* Credibility strip */
+  .strip { background: var(--paper); border-bottom: 1px solid var(--line); padding: 22px 0; }
+  .strip .wrap { display: flex; flex-wrap: wrap; gap: 12px 36px; justify-content: center; color: var(--muted); font-size: .9rem; }
+  .strip strong { color: var(--ink); }
+
+  /* Problem */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .two-col > *, .hero-grid > *, .form-grid > * { min-width: 0; }
+  input, select, textarea { width: 100%; }
+  .pain { list-style: none; padding: 0; margin: 0; }
+  .pain li { padding: 16px 0; border-top: 1px solid var(--line); }
+  .pain li:last-child { border-bottom: 1px solid var(--line); }
+  .pain strong { display: block; margin-bottom: 2px; }
+  .pain span { color: var(--muted); font-size: .95rem; }
+
+  /* Method */
+  .method { background: var(--paper); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px; counter-reset: step; }
+  .step {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px;
+    counter-increment: step; position: relative;
+  }
+  .step::before {
+    content: "0" counter(step); font-family: "Source Serif 4", serif; font-weight: 700;
+    color: var(--brass); font-size: 1.5rem; display: block; margin-bottom: 8px;
+  }
+  .step p { color: var(--muted); font-size: .95rem; margin: 0; }
+
+  /* Modules */
+  .modules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+  .module { border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+  .module .tag { font-size: .75rem; font-weight: 600; color: var(--signal); letter-spacing: .06em; text-transform: uppercase; }
+  .module ul { padding-left: 18px; margin: 10px 0 0; color: var(--muted); font-size: .95rem; }
+  .module li { margin-bottom: 4px; }
+
+  /* Fit */
+  .fit { background: var(--navy); color: #fff; }
+  .fit .lede { color: #c6d2df; }
+  .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+  .fit-box { border: 1px solid rgba(255,255,255,.16); border-radius: var(--radius); padding: 28px; }
+  .fit-box h3 { font-family: Inter, sans-serif; font-size: 1rem; }
+  .fit-box.no .checklist li::before { border: 0; content: "–"; color: #9fb0c3; transform: none; top: 7px; font-weight: 700; }
+
+  /* Packages */
+  .packages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+  .pkg { border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; display: flex; flex-direction: column; }
+  .pkg.featured { border: 2px solid var(--brass); box-shadow: 0 12px 30px -16px rgba(11,30,51,.35); }
+  .pkg .price { font-family: "Source Serif 4", serif; font-size: 1.4rem; font-weight: 700; margin: 6px 0 2px; }
+  .pkg .unit { color: var(--muted); font-size: .85rem; margin-bottom: 16px; }
+  .pkg ul { padding-left: 18px; color: var(--muted); font-size: .95rem; margin: 0 0 20px; flex: 1; }
+  .pkg .badge { align-self: flex-start; background: var(--brass); color: #fff; font-size: .72rem; font-weight: 600; padding: 3px 10px; border-radius: 99px; margin-bottom: 10px; letter-spacing: .04em; }
+  .pkg .btn { text-align: center; }
+  .btn-outline { background: #fff; color: var(--navy); border: 1px solid var(--navy); }
+  .btn-outline:hover { background: var(--paper); }
+
+  /* Proof */
+  .proof { background: var(--paper); }
+  .quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 32px; }
+  .quote { background: #fff; border: 1px dashed #d9b75c; border-radius: var(--radius); padding: 24px; }
+  .quote p { font-family: "Source Serif 4", serif; font-size: 1.1rem; }
+  .quote cite { font-style: normal; color: var(--muted); font-size: .9rem; }
+
+  /* FAQ */
+  details { border-top: 1px solid var(--line); padding: 18px 0; }
+  details:last-of-type { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--brass); font-size: 1.3rem; line-height: 1; }
+  details[open] summary::after { content: "–"; }
+  details p { color: var(--muted); margin: 10px 0 0; }
+
+  /* Form */
+  .apply { background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%); color: #fff; }
+  .apply .lede { color: #c6d2df; }
+  .form-card { background: #fff; color: var(--ink); border-radius: var(--radius); padding: 32px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field.full { grid-column: 1 / -1; }
+  label { font-size: .85rem; font-weight: 600; }
+  input, select, textarea {
+    font: inherit; padding: 11px 12px; border: 1px solid #c4cdd8; border-radius: 6px; background: #fff; color: var(--ink);
+  }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--brass); outline-offset: 1px; border-color: var(--brass); }
+  textarea { min-height: 96px; resize: vertical; }
+  .form-foot { font-size: .8rem; color: var(--muted); margin-top: 14px; }
+  .form-success { display: none; padding: 20px; background: #e8f4ef; border: 1px solid #b7dacb; border-radius: 8px; color: #164b3d; }
+
+  footer { background: #071523; color: #8396ab; font-size: .85rem; padding: 32px 0; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  /* Sticky mobile CTA */
+  .sticky-cta { display: none; }
+
+  @media (max-width: 900px) {
+    section { padding: 60px 0; }
+    .hero { padding: 64px 0; }
+    .hero-grid, .two-col, .fit-grid { grid-template-columns: 1fr; gap: 32px; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .modules, .packages, .quotes { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .wrap { padding: 0 16px; }
+    .steps, .form-grid { grid-template-columns: 1fr; }
+    .nav-cta { display: none; }
+    .sticky-cta {
+      display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
+      background: var(--navy); padding: 10px 16px; border-top: 1px solid rgba(255,255,255,.15);
+    }
+    .sticky-cta .btn { width: 100%; text-align: center; }
+    footer { padding-bottom: 88px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<div class="draft-bar" role="note">
+  <strong>DRAFT — for internal review only.</strong> Not live. Items marked <span class="ph">like this</span> are placeholders to replace with verified details.
+</div>
+
+<header class="nav">
+  <div class="wrap">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">SB</span> SeaFleet Backbone</div>
+    <a class="btn btn-sm nav-cta" href="#apply">Book a Bridge Assessment</a>
+  </div>
+</header>
+
+<main>
+<!-- 1. HERO: the promise -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Captain Maneuvering Coaching</span>
+      <h1>Bring every berthing, transit and close-quarters approach under calm, deliberate control.</h1>
+      <p class="lede">One-to-one shiphandling coaching for masters and senior officers. We work on your vessel, your ports and your decisions, so the manoeuvres that keep you up at night become ones you've rehearsed, briefed and owned.</p>
+      <div class="hero-ctas">
+        <a class="btn" href="#apply">Book a Bridge Assessment</a>
+        <a class="btn btn-ghost" href="#how">See how it works</a>
+      </div>
+      <p class="hero-note">A 45-minute confidential call. No obligation, no sales script.</p>
+    </div>
+    <aside class="hero-card" aria-label="What the coaching covers">
+      <h3>What you'll leave with</h3>
+      <ul class="checklist">
+        <li>A personal manoeuvring profile: strengths, blind spots, habits under pressure</li>
+        <li>Pilot-ready passage and berthing briefs for your highest-risk ports</li>
+        <li>Clear abort points and contingency plans you've actually rehearsed</li>
+        <li>Bridge team communication that holds up when conditions change</li>
+        <li>Documentation that supports your SMS and audit trail</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<!-- Credibility strip -->
+<div class="strip" aria-label="Credentials">
+  <div class="wrap">
+    <span><strong>Coaches:</strong> <span class="ph">former masters / marine pilots, [X] yrs combined sea time</span></span>
+    <span><strong>Vessel types:</strong> <span class="ph">tankers, bulk, container, offshore support</span></span>
+    <span><strong>Framework:</strong> <span class="ph">aligned with STCW / BRM principles (verify wording)</span></span>
+  </div>
+</div>
+
+<!-- 2. PROBLEM: name the stakes -->
+<section>
+  <div class="wrap two-col">
+    <div>
+      <span class="eyebrow">Why this matters</span>
+      <h2>The hardest part of command often happens in the last few cables.</h2>
+      <p class="lede">Most incidents in confined waters don't come from a lack of knowledge. They come from small judgement calls made under time pressure, with incomplete information and a bridge team that isn't quite in sync.</p>
+      <p>Simulator courses help, but they rarely reflect <em>your</em> ship's handling, <em>your</em> trading pattern or the way <em>you</em> make decisions. That gap is what this programme closes.</p>
+    </div>
+    <ul class="pain">
+      <li><strong>New command, unfamiliar hull</strong><span>Different windage, pivot point and power response from your last vessel, and no time to learn it gently.</span></li>
+      <li><strong>Marginal weather decisions</strong><span>Knowing exactly when to go, wait, or abort, and being able to defend that call afterwards.</span></li>
+      <li><strong>Master–pilot dynamics</strong><span>Keeping situational authority without undermining the pilot or the team.</span></li>
+      <li><strong>Scrutiny after near-misses</strong><span>Vetting, PSC and internal audits that expect evidence of competence, not just certificates.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 3. METHOD -->
+<section class="method" id="how">
+  <div class="wrap">
+    <span class="eyebrow">How it works</span>
+    <h2>A structured programme, built around your vessel.</h2>
+    <p class="lede">Four stages, delivered remotely, on board, or as a mix, depending on your schedule and where you're trading.</p>
+    <div class="steps">
+      <div class="step"><h3>Bridge assessment</h3><p>A confidential review of your experience, vessel particulars, trading pattern and the manoeuvres you find most demanding.</p></div>
+      <div class="step"><h3>Manoeuvring profile</h3><p>We map your decision-making under pressure and identify the two or three habits that will make the biggest difference.</p></div>
+      <div class="step"><h3>Coached practice</h3><p>Scenario debriefs, port-specific planning and, where possible, live coaching during real arrivals and departures.</p></div>
+      <div class="step"><h3>Debrief &amp; record</h3><p>A written debrief and competence record you can use for your own development and your company's SMS.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. CURRICULUM -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">What we cover</span>
+    <h2>Practical shiphandling, not theory for its own sake.</h2>
+    <div class="modules">
+      <div class="module">
+        <span class="tag">Module A</span>
+        <h3>Vessel behaviour</h3>
+        <ul>
+          <li>Pivot point, transverse thrust and turning behaviour</li>
+          <li>Wind, current and windage at low speed</li>
+          <li>Squat, bank and interaction effects</li>
+        </ul>
+      </div>
+      <div class="module">
+        <span class="tag">Module B</span>
+        <h3>Berthing &amp; unberthing</h3>
+        <ul>
+          <li>Approach planning, speed control and abort points</li>
+          <li>Working with tugs, thrusters and lines</li>
+          <li>Tight berths, crosswinds and tidal windows</li>
+        </ul>
+      </div>
+      <div class="module">
+        <span class="tag">Module C</span>
+        <h3>Command &amp; team</h3>
+        <ul>
+          <li>Master–pilot exchange and challenge-and-response</li>
+          <li>Bridge resource management under pressure</li>
+          <li>Briefing, closed-loop communication and debriefs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. FIT: qualify the lead -->
+<section class="fit">
+  <div class="wrap">
+    <span class="eyebrow">Is this right for you?</span>
+    <h2>Built for people who already hold command, or soon will.</h2>
+    <div class="fit-grid">
+      <div class="fit-box">
+        <h3>A strong fit if you are…</h3>
+        <ul class="checklist">
+          <li>A master stepping into a new vessel type or trade</li>
+          <li>A chief officer preparing for first command</li>
+          <li>An experienced master who wants a sharper edge in confined waters</li>
+          <li>A fleet or marine manager developing a group of senior officers</li>
+        </ul>
+      </div>
+      <div class="fit-box no">
+        <h3>Probably not the right fit if you need…</h3>
+        <ul class="checklist">
+          <li>A certificate of competency or a statutory course</li>
+          <li>Entry-level navigation training</li>
+          <li>A replacement for pilotage or company procedures</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. OFFER -->
+<section id="packages">
+  <div class="wrap">
+    <span class="eyebrow">Programme options</span>
+    <h2>Choose the depth that fits your situation.</h2>
+    <p class="lede">Every engagement starts with the same free Bridge Assessment, so we can recommend the right option honestly.</p>
+    <div class="packages">
+      <div class="pkg">
+        <h3>Focused Session</h3>
+        <div class="price"><span class="ph">[Price]</span></div>
+        <div class="unit">Single engagement</div>
+        <ul>
+          <li>Bridge assessment</li>
+          <li>One port or manoeuvre, planned and debriefed in depth</li>
+          <li>Written action notes</li>
+        </ul>
+        <a class="btn btn-outline" href="#apply">Start with an assessment</a>
+      </div>
+      <div class="pkg featured">
+        <span class="badge">MOST CHOSEN</span>
+        <h3>Command Programme</h3>
+        <div class="price"><span class="ph">[Price]</span></div>
+        <div class="unit"><span class="ph">[6–8 weeks]</span>, remote + optional on board</div>
+        <ul>
+          <li>Full manoeuvring profile</li>
+          <li>All three modules, tailored to your vessel</li>
+          <li>Port-specific briefs for your highest-risk calls</li>
+          <li>Written debrief and competence record</li>
+        </ul>
+        <a class="btn" href="#apply">Book a Bridge Assessment</a>
+      </div>
+      <div class="pkg">
+        <h3>Fleet Programme</h3>
+        <div class="price">Custom</div>
+        <div class="unit">For ship managers &amp; operators</div>
+        <ul>
+          <li>Cohort coaching for masters and chief officers</li>
+          <li>Fleet-level findings report</li>
+          <li>Alignment with your SMS and training matrix</li>
+        </ul>
+        <a class="btn btn-outline" href="#apply">Discuss fleet options</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. PROOF -->
+<section class="proof">
+  <div class="wrap">
+    <span class="eyebrow">From the bridge</span>
+    <h2>What masters say.</h2>
+    <p class="lede">Placeholder slots. Replace with real, permissioned testimonials before publishing.</p>
+    <div class="quotes">
+      <figure class="quote" style="margin:0">
+        <p><span class="ph">[Real client quote about a specific manoeuvre or port that became easier]</span></p>
+        <cite><span class="ph">[Name or "Master", vessel type, company if permitted]</span></cite>
+      </figure>
+      <figure class="quote" style="margin:0">
+        <p><span class="ph">[Real quote from a fleet or marine manager about results across their officers]</span></p>
+        <cite><span class="ph">[Role, company if permitted]</span></cite>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 8. FAQ: remove objections -->
+<section>
+  <div class="wrap" style="max-width:800px">
+    <span class="eyebrow">Questions</span>
+    <h2>Before you book.</h2>
+    <details>
+      <summary>Is this confidential?</summary>
+      <p>Yes. What you share in the assessment and coaching stays between you and your coach. If your company sponsors the programme, we agree in advance exactly what is reported back.</p>
+    </details>
+    <details>
+      <summary>Can you coach while I'm at sea?</summary>
+      <p>Yes. Most of the programme works remotely around your watch schedule. On-board sessions are arranged where port calls and company approval allow.</p>
+    </details>
+    <details>
+      <summary>Does this replace simulator or statutory training?</summary>
+      <p>No. It complements them. Statutory courses give you the qualification; coaching helps you apply it to your actual vessel and trade.</p>
+    </details>
+    <details>
+      <summary>Can my company pay for it?</summary>
+      <p>Often, yes. We provide a programme outline and written records that support training budgets and SMS documentation.</p>
+    </details>
+    <details>
+      <summary>What happens on the Bridge Assessment call?</summary>
+      <p>We talk through your background, vessel and the manoeuvres you want to improve. You'll leave with at least one practical takeaway, and an honest view of whether the programme is worth it for you.</p>
+    </details>
+  </div>
+</section>
+
+<!-- 9. CONVERSION -->
+<section class="apply" id="apply">
+  <div class="wrap two-col">
+    <div>
+      <span class="eyebrow">Next step</span>
+      <h2>Book your confidential Bridge Assessment.</h2>
+      <p class="lede">Tell us a little about your command. We'll reply within <span class="ph">[1 business day]</span> to arrange a call that works around your schedule and time zone.</p>
+      <ul class="checklist" style="margin-top:24px">
+        <li>45 minutes, by video or phone</li>
+        <li>With a coach who has held command, not a salesperson</li>
+        <li>No cost and no commitment</li>
+      </ul>
+    </div>
+    <div class="form-card">
+      <form id="lead-form" novalidate>
+        <div class="form-grid">
+          <div class="field"><label for="name">Full name</label><input id="name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="rank">Current rank</label>
+            <select id="rank" name="rank" required>
+              <option value="">Select…</option>
+              <option>Master</option>
+              <option>Chief Officer</option>
+              <option>Staff Captain</option>
+              <option>Marine / Fleet Manager</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field"><label for="vessel">Vessel type</label>
+            <select id="vessel" name="vessel">
+              <option value="">Select…</option>
+              <option>Tanker</option>
+              <option>Bulk carrier</option>
+              <option>Container</option>
+              <option>Offshore / OSV</option>
+              <option>Passenger / Ro-Ro</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field full"><label for="goal">Which manoeuvre or situation do you most want to master?</label>
+            <textarea id="goal" name="goal" placeholder="e.g. Crosswind berthing in a port with limited tug support"></textarea>
+          </div>
+          <div class="field full"><label for="interest">I'm interested in</label>
+            <select id="interest" name="interest">
+              <option>Coaching for myself</option>
+              <option>A programme for my officers / fleet</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn" type="submit" style="width:100%;margin-top:20px">Request my Bridge Assessment</button>
+        <p class="form-foot">Draft form: does not send data anywhere. <span class="ph">[Link privacy policy here]</span></p>
+      </form>
+      <div class="form-success" id="form-success" role="status" aria-live="polite">
+        <strong>Thank you. Your request is in.</strong><br>
+        A coach will be in touch within <span class="ph">[1 business day]</span>. (Draft preview: nothing was submitted.)
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© SeaFleet Backbone. Maritime strategy &amp; compliance.</span>
+    <span>DRAFT page — not for publication</span>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a class="btn" href="#apply">Book a Bridge Assessment</a></div>
+
+<script>
+  // Draft-only: validates locally and shows a confirmation. No data leaves the page.
+  (function () {
+    var form = document.getElementById('lead-form');
+    var ok = document.getElementById('form-success');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      form.style.display = 'none';
+      ok.style.display = 'block';
+    });
+  })();
+</script>
+</body>
+</html>
