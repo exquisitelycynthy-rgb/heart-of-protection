@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Fleet Shiphandling Programme — DRAFT</title>
+<meta name="description" content="DRAFT funnel page: fleet-level shiphandling coaching programme for ship managers and operators.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0b1e33;
+    --navy-2: #12304f;
+    --ink: #13202e;
+    --muted: #556375;
+    --line: #dde3ea;
+    --paper: #f6f8fa;
+    --white: #ffffff;
+    --brass: #c08a2e;
+    --brass-dark: #9a6d1f;
+    --signal: #1f6f5c;
+    --radius: 10px;
+    --max: 1120px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: "Source Serif 4", Georgia, serif; line-height: 1.2; margin: 0 0 .5em; }
+  h1 { font-size: clamp(2rem, 4.6vw, 3.25rem); }
+  h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+  h3 { font-size: 1.15rem; }
+  p { margin: 0 0 1em; }
+  a { color: inherit; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+  section { padding: 80px 0; }
+  .eyebrow {
+    font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--brass); margin-bottom: 12px; display: block;
+  }
+  .lede { font-size: 1.125rem; color: var(--muted); max-width: 680px; }
+
+  /* Draft banner */
+  .draft-bar {
+    background: #fff4d6; color: #5c4300; font-size: .85rem; text-align: center;
+    padding: 8px 16px; border-bottom: 1px solid #f0d99a;
+  }
+  .ph { background: #fff4d6; color: #5c4300; border: 1px dashed #d9b75c; border-radius: 4px; padding: 0 4px; font-size: .92em; }
+
+  /* Nav */
+  header.nav { background: var(--navy); color: #fff; }
+  header.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { font-weight: 700; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .brand-mark {
+    width: 28px; height: 28px; border: 2px solid var(--brass); border-radius: 50%;
+    display: grid; place-items: center; font-size: .7rem; color: var(--brass);
+  }
+  .nav-cta { font-size: .9rem; }
+
+  /* Buttons */
+  .btn {
+    display: inline-block; background: var(--brass); color: #fff; text-decoration: none;
+    font-weight: 600; padding: 14px 24px; border-radius: 8px; border: 0; cursor: pointer;
+    font-size: 1rem; font-family: inherit; transition: background .15s;
+  }
+  .btn:hover, .btn:focus-visible { background: var(--brass-dark); }
+  .btn:focus-visible { outline: 3px solid #f3d699; outline-offset: 2px; }
+  .btn-ghost { background: transparent; border: 1px solid rgba(255,255,255,.4); }
+  .btn-ghost:hover { background: rgba(255,255,255,.08); }
+  .btn-sm { padding: 9px 16px; font-size: .9rem; }
+
+  /* Hero */
+  .hero {
+    background:
+      radial-gradient(1200px 500px at 85% -10%, rgba(192,138,46,.18), transparent 60%),
+      linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+    color: #fff; padding: 96px 0 88px;
+  }
+  .hero-grid { display: grid; grid-template-columns: 1.25fr .9fr; gap: 56px; align-items: center; }
+  .hero .lede { color: #c6d2df; }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+  .hero-note { font-size: .85rem; color: #9fb0c3; margin-top: 14px; }
+  .hero-card {
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14);
+    border-radius: var(--radius); padding: 28px;
+  }
+  .hero-card h3 { color: #fff; font-family: Inter, sans-serif; font-size: 1rem; letter-spacing: .02em; }
+  .checklist { list-style: none; padding: 0; margin: 0; }
+  .checklist li { padding: 8px 0 8px 28px; position: relative; border-top: 1px solid rgba(255,255,255,.08); color: #dbe4ee; font-size: .95rem; }
+  .checklist li:first-child { border-top: 0; }
+  .checklist li::before {
+    content: ""; position: absolute; left: 2px; top: 15px; width: 12px; height: 7px;
+    border-left: 2px solid var(--brass); border-bottom: 2px solid var(--brass); transform: rotate(-45deg);
+  }
+
+  /* Credibility strip */
+  .strip { background: var(--paper); border-bottom: 1px solid var(--line); padding: 22px 0; }
+  .strip .wrap { display: flex; flex-wrap: wrap; gap: 12px 36px; justify-content: center; color: var(--muted); font-size: .9rem; }
+  .strip strong { color: var(--ink); }
+
+  /* Problem */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .two-col > *, .hero-grid > *, .form-grid > * { min-width: 0; }
+  input, select, textarea { width: 100%; }
+  .pain { list-style: none; padding: 0; margin: 0; }
+  .pain li { padding: 16px 0; border-top: 1px solid var(--line); }
+  .pain li:last-child { border-bottom: 1px solid var(--line); }
+  .pain strong { display: block; margin-bottom: 2px; }
+  .pain span { color: var(--muted); font-size: .95rem; }
+
+  /* Method */
+  .method { background: var(--paper); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px; counter-reset: step; }
+  .step {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px;
+    counter-increment: step; position: relative;
+  }
+  .step::before {
+    content: "0" counter(step); font-family: "Source Serif 4", serif; font-weight: 700;
+    color: var(--brass); font-size: 1.5rem; display: block; margin-bottom: 8px;
+  }
+  .step p { color: var(--muted); font-size: .95rem; margin: 0; }
+
+  /* Modules */
+  .modules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+  .module { border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+  .module .tag { font-size: .75rem; font-weight: 600; color: var(--signal); letter-spacing: .06em; text-transform: uppercase; }
+  .module ul { padding-left: 18px; margin: 10px 0 0; color: var(--muted); font-size: .95rem; }
+  .module li { margin-bottom: 4px; }
+
+  /* Fit */
+  .fit { background: var(--navy); color: #fff; }
+  .fit .lede { color: #c6d2df; }
+  .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+  .fit-box { border: 1px solid rgba(255,255,255,.16); border-radius: var(--radius); padding: 28px; }
+  .fit-box h3 { font-family: Inter, sans-serif; font-size: 1rem; }
+  .fit-box.no .checklist li::before { border: 0; content: "–"; color: #9fb0c3; transform: none; top: 7px; font-weight: 700; }
+
+  /* Packages */
+  .packages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+  .pkg { border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; display: flex; flex-direction: column; }
+  .pkg.featured { border: 2px solid var(--brass); box-shadow: 0 12px 30px -16px rgba(11,30,51,.35); }
+  .pkg .price { font-family: "Source Serif 4", serif; font-size: 1.4rem; font-weight: 700; margin: 6px 0 2px; }
+  .pkg .unit { color: var(--muted); font-size: .85rem; margin-bottom: 16px; }
+  .pkg ul { padding-left: 18px; color: var(--muted); font-size: .95rem; margin: 0 0 20px; flex: 1; }
+  .pkg .badge { align-self: flex-start; background: var(--brass); color: #fff; font-size: .72rem; font-weight: 600; padding: 3px 10px; border-radius: 99px; margin-bottom: 10px; letter-spacing: .04em; }
+  .pkg .btn { text-align: center; }
+  .btn-outline { background: #fff; color: var(--navy); border: 1px solid var(--navy); }
+  .btn-outline:hover { background: var(--paper); }
+
+  /* Proof */
+  .proof { background: var(--paper); }
+  .quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 32px; }
+  .quote { background: #fff; border: 1px dashed #d9b75c; border-radius: var(--radius); padding: 24px; }
+  .quote p { font-family: "Source Serif 4", serif; font-size: 1.1rem; }
+  .quote cite { font-style: normal; color: var(--muted); font-size: .9rem; }
+
+  /* FAQ */
+  details { border-top: 1px solid var(--line); padding: 18px 0; }
+  details:last-of-type { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--brass); font-size: 1.3rem; line-height: 1; }
+  details[open] summary::after { content: "–"; }
+  details p { color: var(--muted); margin: 10px 0 0; }
+
+  /* Form */
+  .apply { background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%); color: #fff; }
+  .apply .lede { color: #c6d2df; }
+  .form-card { background: #fff; color: var(--ink); border-radius: var(--radius); padding: 32px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field.full { grid-column: 1 / -1; }
+  label { font-size: .85rem; font-weight: 600; }
+  input, select, textarea {
+    font: inherit; padding: 11px 12px; border: 1px solid #c4cdd8; border-radius: 6px; background: #fff; color: var(--ink);
+  }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--brass); outline-offset: 1px; border-color: var(--brass); }
+  textarea { min-height: 96px; resize: vertical; }
+  .form-foot { font-size: .8rem; color: var(--muted); margin-top: 14px; }
+  .form-success { display: none; padding: 20px; background: #e8f4ef; border: 1px solid #b7dacb; border-radius: 8px; color: #164b3d; }
+
+  footer { background: #071523; color: #8396ab; font-size: .85rem; padding: 32px 0; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  /* Sticky mobile CTA */
+  .sticky-cta { display: none; }
+
+  @media (max-width: 900px) {
+    section { padding: 60px 0; }
+    .hero { padding: 64px 0; }
+    .hero-grid, .two-col, .fit-grid { grid-template-columns: 1fr; gap: 32px; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .modules, .packages, .quotes { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .wrap { padding: 0 16px; }
+    .steps, .form-grid { grid-template-columns: 1fr; }
+    .nav-cta { display: none; }
+    .sticky-cta {
+      display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
+      background: var(--navy); padding: 10px 16px; border-top: 1px solid rgba(255,255,255,.15);
+    }
+    .sticky-cta .btn { width: 100%; text-align: center; }
+    footer { padding-bottom: 88px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="draft-bar" role="note">
+  <strong>DRAFT — for internal review only.</strong> Not live. Items marked <span class="ph">like this</span> are placeholders to replace with verified details.
+</div>
+
+<header class="nav">
+  <div class="wrap">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">SB</span> SeaFleet Backbone</div>
+    <span style="display:flex;gap:16px;align-items:center"><a class="nav-cta" href="index.html" style="color:#c6d2df;font-size:.9rem">For masters →</a><a class="btn btn-sm nav-cta" href="#apply">Request a Fleet Briefing</a></span>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Fleet Shiphandling Programme</span>
+      <h1>Contact incidents are a command problem. Fix them at fleet level.</h1>
+      <p class="lede">A structured coaching programme for your masters and chief officers. It reduces manoeuvring risk across your fleet and gives you documented evidence of command competence for vetting, audits and insurers.</p>
+      <div class="hero-ctas">
+        <a class="btn" href="#apply">Request a Fleet Briefing</a>
+        <a class="btn btn-ghost" href="#how">See the programme</a>
+      </div>
+      <p class="hero-note">A 30-minute call with a senior consultant. We come prepared with questions about your fleet.</p>
+    </div>
+    <aside class="hero-card" aria-label="What you get">
+      <h3>What the board sees</h3>
+      <ul class="checklist">
+        <li>A baseline of manoeuvring competence across your senior officers</li>
+        <li>Targeted coaching where the risk is concentrated</li>
+        <li>Fewer exposures in berthing, unberthing and confined waters</li>
+        <li>Audit-ready records mapped to your SMS and training matrix</li>
+        <li>A quarterly report you can take to management review</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<div class="strip" aria-label="Credentials">
+  <div class="wrap">
+    <span><strong>Delivered by:</strong> <span class="ph">former masters / marine pilots</span></span>
+    <span><strong>Supports:</strong> <span class="ph">TMSA, SIRE 2.0 and ISM evidence of competence (verify wording)</span></span>
+    <span><strong>Fleets served:</strong> <span class="ph">[segments / regions]</span></span>
+  </div>
+</div>
+
+<section>
+  <div class="wrap two-col">
+    <div>
+      <span class="eyebrow">The business case</span>
+      <h2>Your exposure sits on a handful of bridges, a few minutes at a time.</h2>
+      <p class="lede">Berth and quay contacts, tug incidents and near-misses in confined waters drive a share of claims, off-hire and vetting findings that's far bigger than the time involved.</p>
+      <p>Certificates show that officers are qualified. They don't show how a master handles <em>this</em> vessel on <em>this</em> berth in 25 knots of crosswind. That gap is what auditors, charterers and underwriters are increasingly asking about.</p>
+    </div>
+    <ul class="pain">
+      <li><strong>Claims and deductibles</strong><span>Berth damage, fender and tug claims, and the management time each one costs.</span></li>
+      <li><strong>Off-hire and schedule disruption</strong><span>Incident investigations, repairs and port-state attention.</span></li>
+      <li><strong>Vetting and charterer confidence</strong><span>Observations on bridge team management and master–pilot exchange.</span></li>
+      <li><strong>Retention and succession</strong><span>Promoting chief officers to first command without a structured bridge to get there.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="method" id="how">
+  <div class="wrap">
+    <span class="eyebrow">How the programme runs</span>
+    <h2>Measured, targeted, reported.</h2>
+    <p class="lede">Designed to run alongside crew rotations, with minimal disruption to operations.</p>
+    <div class="steps">
+      <div class="step"><h3>Fleet baseline</h3><p>Confidential assessments of participating masters and chief officers, plus a review of your incident and near-miss data.</p></div>
+      <div class="step"><h3>Risk mapping</h3><p>We identify where manoeuvring risk is concentrated: by vessel type, port, trade or officer group.</p></div>
+      <div class="step"><h3>Targeted coaching</h3><p>One-to-one and cohort coaching on each vessel's own handling data and its highest-risk port calls.</p></div>
+      <div class="step"><h3>Report &amp; review</h3><p>Fleet-level findings, individual competence records and recommendations for your SMS and training matrix.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">What you receive</span>
+    <h2>Deliverables your organisation can use.</h2>
+    <div class="modules">
+      <div class="module">
+        <span class="tag">For the fleet</span>
+        <h3>Risk &amp; findings report</h3>
+        <ul>
+          <li>Competence baseline and progress over the programme</li>
+          <li>Port and vessel-type risk hotspots</li>
+          <li>Prioritised recommendations</li>
+        </ul>
+      </div>
+      <div class="module">
+        <span class="tag">For compliance</span>
+        <h3>Audit-ready evidence</h3>
+        <ul>
+          <li>Individual competence records per officer</li>
+          <li>Mapping to your SMS procedures and training matrix</li>
+          <li>Material you can use in vetting and management review</li>
+        </ul>
+      </div>
+      <div class="module">
+        <span class="tag">For your officers</span>
+        <h3>Practical capability</h3>
+        <ul>
+          <li>Vessel-specific handling sheets and berthing plans</li>
+          <li>Quantified abort criteria and master–pilot checklists</li>
+          <li>A clear path from chief officer to first command</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fit">
+  <div class="wrap">
+    <span class="eyebrow">Is this right for your organisation?</span>
+    <h2>Built for operators who treat command competence as a managed risk.</h2>
+    <div class="fit-grid">
+      <div class="fit-box">
+        <h3>A strong fit if you…</h3>
+        <ul class="checklist">
+          <li>Manage or operate <span class="ph">[5+]</span> vessels</li>
+          <li>Have had contact incidents or vetting findings you want to get ahead of</li>
+          <li>Are taking on new vessel types, trades or newly promoted masters</li>
+          <li>Need stronger evidence of competence for charterers or insurers</li>
+        </ul>
+      </div>
+      <div class="fit-box no">
+        <h3>Probably not the right fit if you need…</h3>
+        <ul class="checklist">
+          <li>Statutory or certificate courses</li>
+          <li>A simulator facility on its own</li>
+          <li>A replacement for your own training department</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="packages">
+  <div class="wrap">
+    <span class="eyebrow">Engagement options</span>
+    <h2>Start small, scale on evidence.</h2>
+    <p class="lede">Most clients begin with a pilot cohort, then extend once they've seen the findings.</p>
+    <div class="packages">
+      <div class="pkg">
+        <h3>Fleet Diagnostic</h3>
+        <div class="price"><span class="ph">[Price]</span></div>
+        <div class="unit">Assessment only</div>
+        <ul>
+          <li>Baseline assessments for <span class="ph">[up to 6]</span> officers</li>
+          <li>Incident and near-miss data review</li>
+          <li>Risk map and recommendations</li>
+        </ul>
+        <a class="btn btn-outline" href="#apply">Discuss a diagnostic</a>
+      </div>
+      <div class="pkg featured">
+        <span class="badge">RECOMMENDED START</span>
+        <h3>Pilot Cohort</h3>
+        <div class="price"><span class="ph">[Price]</span></div>
+        <div class="unit"><span class="ph">[8–12 officers, ~3 months]</span></div>
+        <ul>
+          <li>Everything in the diagnostic</li>
+          <li>Targeted one-to-one coaching</li>
+          <li>Individual competence records</li>
+          <li>Fleet findings report and review meeting</li>
+        </ul>
+        <a class="btn" href="#apply">Request a Fleet Briefing</a>
+      </div>
+      <div class="pkg">
+        <h3>Fleet Partnership</h3>
+        <div class="price">Custom</div>
+        <div class="unit">Annual programme</div>
+        <ul>
+          <li>Rolling coaching across rotations</li>
+          <li>Coaching for first command and new vessel types</li>
+          <li>Quarterly reporting and SMS alignment</li>
+        </ul>
+        <a class="btn btn-outline" href="#apply">Discuss a partnership</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proof">
+  <div class="wrap">
+    <span class="eyebrow">Client perspective</span>
+    <h2>What operators say.</h2>
+    <p class="lede">Placeholder slots. Replace with real, permissioned testimonials and verified results before publishing.</p>
+    <div class="quotes">
+      <figure class="quote" style="margin:0">
+        <p><span class="ph">[Real quote from a DPA, marine superintendent or fleet manager]</span></p>
+        <cite><span class="ph">[Role, company if permitted]</span></cite>
+      </figure>
+      <figure class="quote" style="margin:0">
+        <p><span class="ph">[Verified outcome, e.g. a change in incident or vetting findings, only if you can evidence it]</span></p>
+        <cite><span class="ph">[Source / client]</span></cite>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap" style="max-width:800px">
+    <span class="eyebrow">Questions</span>
+    <h2>What fleet managers ask.</h2>
+    <details><summary>How much time does it take from our officers?</summary><p>Most coaching happens remotely around watch schedules. On-board sessions are planned around port calls you already have, so there's no extra off-hire.</p></details>
+    <details><summary>What do we see about individual officers?</summary><p>We agree on reporting before we start. Typically you receive competence records and fleet-level findings, and the coaching conversations themselves stay confidential so officers can be candid.</p></details>
+    <details><summary>How does this fit with our existing training?</summary><p>It complements simulator and statutory training. We align deliverables to your SMS and training matrix rather than adding a parallel system.</p></details>
+    <details><summary>Can the output be used for vetting and audits?</summary><p>The records are designed to serve as evidence of competence development. We'd confirm exactly how they map to your vetting and audit requirements during the briefing.</p></details>
+    <details><summary>How do we measure whether it worked?</summary><p>We set measures at the start, such as competence baseline vs. end-of-programme, incident and near-miss trends, and vetting observations, and report against them.</p></details>
+  </div>
+</section>
+
+<section class="apply" id="apply">
+  <div class="wrap two-col">
+    <div>
+      <span class="eyebrow">Next step</span>
+      <h2>Request a Fleet Briefing.</h2>
+      <p class="lede">Tell us about your fleet. A senior consultant will reply within <span class="ph">[1 business day]</span> to arrange a 30-minute call.</p>
+      <ul class="checklist" style="margin-top:24px">
+        <li>An initial view of where your manoeuvring risk is likely concentrated</li>
+        <li>A recommended starting point and indicative scope</li>
+        <li>No cost and no commitment</li>
+      </ul>
+    </div>
+    <div class="form-card">
+      <form id="lead-form" novalidate>
+        <div class="form-grid">
+          <div class="field"><label for="name">Full name</label><input id="name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="email">Work email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="company">Company</label><input id="company" name="company" autocomplete="organization" required></div>
+          <div class="field"><label for="role">Your role</label>
+            <select id="role" name="role" required>
+              <option value="">Select…</option>
+              <option>Fleet / Marine Manager</option>
+              <option>Marine Superintendent</option>
+              <option>DPA / HSQE</option>
+              <option>Crewing / Training</option>
+              <option>Executive / Owner</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field"><label for="fleet">Fleet size</label>
+            <select id="fleet" name="fleet">
+              <option value="">Select…</option>
+              <option>1–5 vessels</option>
+              <option>6–20 vessels</option>
+              <option>21–50 vessels</option>
+              <option>50+ vessels</option>
+            </select>
+          </div>
+          <div class="field"><label for="vessel">Main vessel types</label><input id="vessel" name="vessel" placeholder="e.g. Product tankers, OSVs"></div>
+          <div class="field full"><label for="goal">What's driving the enquiry?</label>
+            <textarea id="goal" name="goal" placeholder="e.g. Recent berth contacts, upcoming vetting, new vessel type"></textarea>
+          </div>
+        </div>
+        <button class="btn" type="submit" style="width:100%;margin-top:20px">Request my Fleet Briefing</button>
+        <p class="form-foot">Draft form: does not send data anywhere. <span class="ph">[Link privacy policy here]</span></p>
+      </form>
+      <div class="form-success" id="form-success" role="status" aria-live="polite">
+        <strong>Thank you. Your request is in.</strong><br>
+        A senior consultant will be in touch within <span class="ph">[1 business day]</span>. (Draft preview: nothing was submitted.)
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© SeaFleet Backbone. Maritime strategy &amp; compliance.</span>
+    <span>DRAFT page — not for publication</span>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a class="btn" href="#apply">Request a Fleet Briefing</a></div>
+
+<script>
+  // Draft-only: validates locally and shows a confirmation. No data leaves the page.
+  (function () {
+    var form = document.getElementById('lead-form');
+    var ok = document.getElementById('form-success');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      form.style.display = 'none';
+      ok.style.display = 'block';
+    });
+  })();
+</script>
+</body>
+</html>
